@@ -18,16 +18,16 @@ currentBlockIndex = 1;
 for i = 1:gpc 
     for j = 1:gpc 
         % pointer to locate CM features in CM vector
-        p_cm = 9*(currentBlockIndex - 1) + 1; 
+        p_cm = gpc*gpc*(currentBlockIndex - 1) + 1; 
         % pointer to locate image blocks
         row = h_block*(i - 1) + 1; 
         col = w_block*(j - 1) + 1; 
         % adjust block size
         if i == gpc
-            h_block = h_img - 2*h_block;
+            h_block = h_img - (gpc - 1)*h_block;
         end
         if j == gpc
-           w_block = w_img - 2*w_block;
+           w_block = w_img - (gpc - 1)*w_block;
         end
         
         block = img(row:row + h_block - 1, ...
